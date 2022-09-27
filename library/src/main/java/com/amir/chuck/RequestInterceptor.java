@@ -34,7 +34,7 @@ import okio.Okio;
 /**
  * An OkHttp Interceptor which persists and displays HTTP activity in your application for later inspection.
  */
-public final class ChuckInterceptor implements Interceptor {
+public final class RequestInterceptor implements Interceptor {
 
     public enum Period {
         /**
@@ -55,7 +55,7 @@ public final class ChuckInterceptor implements Interceptor {
         FOREVER
     }
 
-    private static final String LOG_TAG = "ChuckInterceptor";
+    private static final String LOG_TAG = "RequestInterceptor";
     private static final Period DEFAULT_RETENTION = Period.ONE_WEEK;
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
@@ -68,7 +68,7 @@ public final class ChuckInterceptor implements Interceptor {
     /**
      * @param context The current Context.
      */
-    public ChuckInterceptor(Context context) {
+    public RequestInterceptor(Context context) {
         this.context = context.getApplicationContext();
         notificationHelper = new NotificationHelper(this.context);
         showNotification = true;
@@ -79,9 +79,9 @@ public final class ChuckInterceptor implements Interceptor {
      * Control whether a notification is shown while HTTP activity is recorded.
      *
      * @param show true to show a notification, false to suppress it.
-     * @return The {@link ChuckInterceptor} instance.
+     * @return The {@link RequestInterceptor} instance.
      */
-    public ChuckInterceptor showNotification(boolean show) {
+    public RequestInterceptor showNotification(boolean show) {
         showNotification = show;
         return this;
     }
@@ -91,9 +91,9 @@ public final class ChuckInterceptor implements Interceptor {
      * Warning: setting this value too high may cause unexpected results.
      *
      * @param max the maximum length (in bytes) for request/response content.
-     * @return The {@link ChuckInterceptor} instance.
+     * @return The {@link RequestInterceptor} instance.
      */
-    public ChuckInterceptor maxContentLength(long max) {
+    public RequestInterceptor maxContentLength(long max) {
         this.maxContentLength = max;
         return this;
     }
@@ -103,9 +103,9 @@ public final class ChuckInterceptor implements Interceptor {
      * The default is one week.
      *
      * @param period the peroid for which to retain HTTP transaction data.
-     * @return The {@link ChuckInterceptor} instance.
+     * @return The {@link RequestInterceptor} instance.
      */
-    public ChuckInterceptor retainDataFor(Period period) {
+    public RequestInterceptor retainDataFor(Period period) {
         retentionManager = new RetentionManager(context, period);
         return this;
     }
