@@ -13,7 +13,6 @@ import java.nio.channels.FileChannel;
 
 public class SQLiteUtils {
 
-
     public static void browseDatabase(Context context) {
         if (isIntentResolvable(context, getSQLiteDebuggerAppIntent("/"))) {
             String path = extractDatabase(context);
