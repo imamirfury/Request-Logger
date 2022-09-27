@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.amir.chuck">
+    <application>
+        <provider
+            android:name="com.amir.chuck.internal.data.ChuckContentProvider"
+            android:authorities="${applicationId}.chuck.provider"
+            android:exported="false" />
+        <activity
+            android:name="com.amir.chuck.internal.ui.MainActivity"
+            android:label="@string/chuck_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.readystatesoftware.chuck.task"
+            android:theme="@style/Chuck.Theme" />
+        <activity android:name="com.amir.chuck.internal.ui.TransactionActivity"
+            android:theme="@style/Chuck.Theme"
+            android:parentActivityName="com.amir.chuck.internal.ui.MainActivity"/>
+        <service
+            android:name="com.amir.chuck.internal.support.ClearTransactionsService"
+            android:exported="false" />
+    </application>
+</manifest>
