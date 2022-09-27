@@ -34,7 +34,7 @@ import okio.Okio;
 /**
  * An OkHttp Interceptor which persists and displays HTTP activity in your application for later inspection.
  */
-public final class RequestInterceptor implements Interceptor {
+public final class RequestLogger implements Interceptor {
 
     public enum Period {
         /**
@@ -55,7 +55,7 @@ public final class RequestInterceptor implements Interceptor {
         FOREVER
     }
 
-    private static final String LOG_TAG = "RequestInterceptor";
+    private static final String LOG_TAG = "RequestLogger";
     private static final Period DEFAULT_RETENTION = Period.ONE_WEEK;
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
@@ -68,7 +68,7 @@ public final class RequestInterceptor implements Interceptor {
     /**
      * @param context The current Context.
      */
-    public RequestInterceptor(Context context) {
+    public RequestLogger(Context context) {
         this.context = context.getApplicationContext();
         notificationHelper = new NotificationHelper(this.context);
         showNotification = true;
@@ -79,9 +79,9 @@ public final class RequestInterceptor implements Interceptor {
      * Control whether a notification is shown while HTTP activity is recorded.
      *
      * @param show true to show a notification, false to suppress it.
-     * @return The {@link RequestInterceptor} instance.
+     * @return The {@link RequestLogger} instance.
      */
-    public RequestInterceptor showNotification(boolean show) {
+    public RequestLogger showNotification(boolean show) {
         showNotification = show;
         return this;
     }
@@ -91,9 +91,9 @@ public final class RequestInterceptor implements Interceptor {
      * Warning: setting this value too high may cause unexpected results.
      *
      * @param max the maximum length (in bytes) for request/response content.
-     * @return The {@link RequestInterceptor} instance.
+     * @return The {@link RequestLogger} instance.
      */
-    public RequestInterceptor maxContentLength(long max) {
+    public RequestLogger maxContentLength(long max) {
         this.maxContentLength = max;
         return this;
     }
@@ -103,9 +103,9 @@ public final class RequestInterceptor implements Interceptor {
      * The default is one week.
      *
      * @param period the peroid for which to retain HTTP transaction data.
-     * @return The {@link RequestInterceptor} instance.
+     * @return The {@link RequestLogger} instance.
      */
-    public RequestInterceptor retainDataFor(Period period) {
+    public RequestLogger retainDataFor(Period period) {
         retentionManager = new RetentionManager(context, period);
         return this;
     }
