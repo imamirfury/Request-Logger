@@ -1,5 +1,5 @@
 # Request-Logger
-[![](https://jitpack.io/v/imamirfury/Request-Logger.svg)](https://jitpack.io/#imamirfury/No-Request-Logger)
+[![](https://jitpack.io/v/imamirfury/Request-Logger.svg)](https://jitpack.io/#imamirfury/Request-Logger)
 
 Step 1. Add the JitPack repository to your build file 
 
