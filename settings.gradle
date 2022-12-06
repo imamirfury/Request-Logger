@@ -16,4 +16,3 @@ dependencyResolutionManagement {
 rootProject.name = "Request Logger"
 include ':app'
 include ':library'
-include ':library-no-logger'

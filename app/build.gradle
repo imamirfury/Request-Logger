@@ -35,7 +35,6 @@ dependencies {
 
 //    implementation 'com.github.imamirfury:Request-Logger:1.0.3'
     implementation project(":library")
-    implementation project(":library-no-logger")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
