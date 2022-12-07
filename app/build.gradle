@@ -34,7 +34,7 @@ android {
 dependencies {
 
     debugImplementation 'com.github.imamirfury:Request-Logger:1.0.5'
-    releaseImplementation 'com.github.imamirfury:No-Request-Logger:1.0.4'
+    releaseImplementation 'com.github.imamirfury:No-Request-Logger:1.0.6'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
